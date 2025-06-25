@@ -1,0 +1,1185 @@
+/* Подключение шрифтов (уже есть в HTML) */
+
+:root {
+    --primary-bg: rgba(25, 25, 25, 0.2); /* Сделано прозрачнее */
+    --secondary-bg: rgba(40, 40, 40, 0.8); /* Более прозрачный для языка */
+    --text-light: #f8f8f8;
+    --text-medium: #bbb;
+    --text-dark: #888;
+    --border-color: #555;
+    --accent-color: #e0b040;
+    --accent-hover-color: #ffc400;
+    --shadow-dark: rgba(0, 0, 0, 0.9);
+    --shadow-medium: rgba(0, 0, 0, 0.7);
+    --shadow-light: rgba(0, 0, 0, 0.5);
+    --header-height-desktop: 80px;
+    --header-height-mobile: 60px;
+
+    /* Новые переменные для кнопок соцсетей */
+    --social-btn-size: 55px; /* Единый размер для всех кнопок */
+    --social-icon-size: 1.6em; /* Размер иконки внутри кнопки */
+
+    /* Семейства шрифтов */
+    --font-heading: 'Oswald', sans-serif; /* Для заголовков */
+    --font-body: 'Roboto', sans-serif; /* Для основного текста */
+}
+
+/* Сброс стилей и базовые настройки */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: var(--font-body);
+    color: var(--text-light);
+    line-height: 1.6;
+    background-color: #1a1a1a; /* Основной темный фон */
+    overflow-x: hidden; /* Предотвратить горизонтальную прокрутку */
+    position: relative; /* Для позиционирования фонового изображения */
+}
+
+/* Анимированный фон */
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('images/fon2.jpg'); /* Указываем новый фон */
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+    filter: brightness(0.4) grayscale(0.5); /* Затемнение и немного обесцвечивание */
+    z-index: -2; /* Отправляем на задний план */
+    will-change: transform; /* Подсказка браузеру для оптимизации анимации */
+}
+
+/* Эффект параллакса для фона через JS */
+/* .parallax-bg будет добавляться и управляться JS */
+
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* Header */
+.main-header {
+    background-color: var(--primary-bg);
+    padding: 15px 0;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    backdrop-filter: blur(8px); /* Эффект размытия */
+    border-bottom: 1px solid var(--border-color);
+}
+
+.main-header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: var(--header-height-desktop);
+}
+
+.logo h1 {
+    font-family: var(--font-heading);
+    font-size: 1.8em;
+    color: var(--accent-color);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.main-nav ul {
+    list-style: none;
+    display: flex;
+}
+
+.main-nav ul li {
+    margin-left: 30px;
+}
+
+.main-nav ul li a {
+    color: var(--text-light);
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 1.1em;
+    transition: color 0.3s ease, transform 0.3s ease;
+    position: relative;
+}
+
+.main-nav ul li a::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -5px;
+    width: 0;
+    height: 2px;
+    background-color: var(--accent-color);
+    transition: width 0.3s ease;
+}
+
+.main-nav ul li a:hover {
+    color: var(--accent-hover-color);
+    transform: translateY(-2px);
+}
+
+.main-nav ul li a:hover::after {
+    width: 100%;
+}
+
+/* Language Switcher */
+.language-switcher {
+    position: relative;
+    display: inline-block;
+    z-index: 1010; /* Убедитесь, что он выше меню */
+}
+
+.lang-toggle-btn {
+    background-color: var(--secondary-bg);
+    color: var(--text-light);
+    border: 1px solid var(--border-color);
+    padding: 8px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1em;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+    backdrop-filter: blur(5px);
+}
+
+.lang-toggle-btn:hover {
+    background-color: rgba(60, 60, 60, 0.8);
+    border-color: var(--accent-color);
+}
+
+.lang-dropdown {
+    position: absolute;
+    top: 100%; /* Под кнопкой */
+    left: 0;
+    background-color: rgba(40, 40, 40, 0.95);
+    border: 1px solid var(--border-color);
+    border-radius: 5px;
+    overflow: hidden;
+    min-width: 100px;
+    display: none;
+    flex-direction: column;
+    z-index: 10;
+    box-shadow: 0 4px 8px var(--shadow-medium);
+}
+
+.lang-dropdown.show {
+    display: flex;
+}
+
+.lang-dropdown .lang-btn {
+    background: none;
+    border: none;
+    color: var(--text-light);
+    padding: 10px 15px;
+    text-align: left;
+    width: 100%;
+    cursor: pointer;
+    transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.lang-dropdown .lang-btn:hover {
+    background-color: var(--accent-color);
+    color: #1a1a1a;
+}
+
+/* Hamburger Menu (Mobile) */
+.hamburger-menu {
+    display: none; /* Скрыто на десктопе */
+    flex-direction: column;
+    justify-content: space-between;
+    width: 30px;
+    height: 20px;
+    cursor: pointer;
+    z-index: 1001;
+    background: none;
+    border: none;
+    padding: 0;
+}
+
+.hamburger-menu span {
+    display: block;
+    width: 100%;
+    height: 2px;
+    background-color: var(--text-light);
+    transition: all 0.3s ease;
+}
+
+.hamburger-menu.active span:nth-child(1) {
+    transform: translateY(9px) rotate(45deg);
+}
+
+.hamburger-menu.active span:nth-child(2) {
+    opacity: 0;
+}
+
+.hamburger-menu.active span:nth-child(3) {
+    transform: translateY(-9px) rotate(-45deg);
+}
+
+/* Hero Section */
+.hero-section {
+    position: relative;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    background-size: cover;
+    background-position: center;
+    color: var(--text-light);
+    padding-top: var(--header-height-desktop); /* Учитываем высоту хедера */
+    overflow: hidden; /* Чтобы AOS работал корректно */
+}
+
+.hero-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6); /* Затемнение для читаемости текста */
+    z-index: 1;
+}
+
+.hero-section .container {
+    position: relative;
+    z-index: 2;
+    text-shadow: 2px 2px 8px var(--shadow-dark);
+}
+
+.hero-section h2 {
+    font-family: var(--font-heading);
+    font-size: 4em;
+    margin-bottom: 10px;
+    color: var(--accent-color);
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    font-weight: 700;
+}
+
+.hero-section .subtitle {
+    font-family: var(--font-heading);
+    font-size: 2.5em;
+    margin-bottom: 20px;
+    color: var(--text-light);
+    font-weight: 500;
+}
+
+.hero-section .description {
+    font-size: 1.5em;
+    margin-bottom: 40px;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.btn {
+    display: inline-block;
+    background-color: var(--accent-color);
+    color: #1a1a1a; /* Темный текст на акцентном фоне */
+    padding: 15px 30px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-size: 1.2em;
+    font-weight: 700;
+    transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 4px 10px var(--shadow-medium);
+    border: none; /* Убираем стандартную границу кнопки */
+    cursor: pointer;
+}
+
+.btn:hover {
+    background-color: var(--accent-hover-color);
+    transform: translateY(-3px);
+    box-shadow: 0 6px 15px var(--shadow-dark);
+}
+
+/* General Section Styling */
+section {
+    padding: 80px 0;
+    background-color: rgba(26, 26, 26, 0.7); /* Полупрозрачный фон секций */
+    margin-bottom: 20px; /* Отступ между секциями */
+    border-radius: 10px; /* Скругленные углы секций */
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5); /* Тень для секций */
+    position: relative; /* Для наложения фона */
+    z-index: 0;
+    overflow: hidden; /* Для AOS */
+}
+
+section:first-of-type { /* Для первой секции после хедера */
+    padding-top: calc(80px + var(--header-height-desktop)); /* Учитываем хедер */
+}
+
+.section-title {
+    font-family: var(--font-heading);
+    font-size: 3em;
+    color: var(--accent-color);
+    text-align: center;
+    margin-bottom: 60px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    position: relative;
+    padding-bottom: 10px;
+}
+
+.section-title::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    bottom: 0;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 4px;
+    background-color: var(--accent-hover-color);
+    border-radius: 2px;
+}
+
+/* About Section */
+.about-section .about-content {
+    display: flex;
+    align-items: center;
+    gap: 40px;
+}
+
+.about-section .about-image {
+    flex: 1;
+    min-width: 300px;
+    position: relative;
+    padding: 10px; /* Отступ для рамки */
+    background: linear-gradient(45deg, var(--accent-color), var(--accent-hover-color)); /* Градиентная рамка */
+    border-radius: 10px;
+    box-shadow: 0 0 15px var(--shadow-medium);
+}
+
+.about-section .about-image img {
+    max-width: 100%;
+    display: block;
+    border-radius: 8px;
+    transition: transform 0.3s ease;
+}
+
+.about-section .about-image img:hover {
+    transform: scale(1.02);
+}
+
+.about-section .about-text {
+    flex: 2;
+    font-size: 1.1em;
+    line-height: 1.8;
+    background-color: rgba(50, 50, 50, 0.7);
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: inset 0 0 15px rgba(0, 0, 0, 0.4);
+}
+
+.about-section .about-text p {
+    margin-bottom: 15px;
+    color: var(--text-medium);
+}
+
+/* Swiper Base Styles (for Services, Portfolio, Process, Reviews) */
+.swiper {
+    width: 100%;
+    padding-bottom: 50px; /* Для пагинации */
+    padding-top: 20px; /* Отступ сверху для навигации/теней */
+    overflow: hidden; /* Чтобы скрывать лишние слайды */
+}
+
+.swiper-slide {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    background-color: rgba(60, 60, 60, 0.6); /* Темный фон для слайдов */
+    border-radius: 10px;
+    box-shadow: 0 5px 20px var(--shadow-dark);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    transform: scale(0.9); /* Начальное уменьшение для боковых слайдов */
+    opacity: 0.7; /* Начальная прозрачность для боковых слайдов */
+    display: flex; /* Для корректного расположения содержимого внутри слайда */
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 20px;
+    height: auto; /* Allow content to dictate height */
+}
+
+.swiper-slide-active {
+    transform: scale(1.05); /* Увеличение активного слайда */
+    opacity: 1;
+    box-shadow: 0 10px 30px var(--shadow-dark), 0 0 25px var(--accent-color); /* Более выраженная тень и свечение */
+}
+
+.swiper-button-next,
+.swiper-button-prev {
+    color: var(--accent-color) !important; /* Цвет стрелок */
+    width: 50px;
+    height: 50px;
+    background-color: rgba(40, 40, 40, 0.7);
+    border-radius: 50%;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.swiper-button-next:hover,
+.swiper-button-prev:hover {
+    background-color: var(--accent-hover-color);
+    color: #1a1a1a !important; /* Черный текст на ховере */
+    transform: scale(1.1);
+}
+
+.swiper-pagination-bullet {
+    background-color: var(--text-medium) !important; /* Цвет неактивных точек пагинации */
+    opacity: 0.6 !important;
+}
+
+.swiper-pagination-bullet-active {
+    background-color: var(--accent-color) !important; /* Цвет активной точки пагинации */
+    opacity: 1 !important;
+}
+
+/* Services Section Specific Styles */
+.services-section .service-item {
+    padding: 20px;
+}
+
+.services-section .service-item img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 8px;
+    margin-bottom: 15px;
+    border: 1px solid var(--border-color);
+}
+
+.services-section .service-item h3 {
+    font-family: var(--font-heading);
+    font-size: 1.8em;
+    color: var(--accent-color);
+    margin-bottom: 10px;
+}
+
+.services-section .service-item p {
+    font-size: 1em;
+    color: var(--text-medium);
+}
+
+
+/* Portfolio Section Specific Styles */
+.portfolio-section .gallery-grid .swiper-slide {
+    height: 300px; /* Фиксированная высота для изображений в портфолио */
+    padding: 0; /* Убираем паддинги слайда для изображений */
+    overflow: hidden; /* Обрезаем, если изображение выходит за границы */
+}
+
+.portfolio-section .gallery-grid img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Заполнение контейнера без искажений */
+    border-radius: 10px;
+    border: 2px solid var(--accent-color); /* Рамка для изображений */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer; /* Указывает на интерактивность */
+}
+
+.portfolio-section .gallery-grid img:hover {
+    transform: scale(1.03);
+    box-shadow: 0 0 25px var(--accent-hover-color);
+}
+
+/* Lightbox for Portfolio */
+.lightbox {
+    display: none;
+    position: fixed;
+    z-index: 2000; /* Выше всего остального */
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.9);
+    align-items: center;
+    justify-content: center;
+    animation: fadeIn 0.3s forwards;
+}
+
+.lightbox.active {
+    display: flex;
+}
+
+.lightbox-content {
+    margin: auto;
+    display: block;
+    max-width: 90%;
+    max-height: 90%;
+    border-radius: 8px;
+    box-shadow: 0 0 25px rgba(224, 176, 64, 0.8); /* Свечение вокруг фото */
+    animation: zoomIn 0.3s forwards;
+}
+
+.lightbox-close {
+    position: absolute;
+    top: 20px;
+    right: 35px;
+    color: var(--text-light);
+    font-size: 40px;
+    font-weight: bold;
+    transition: 0.3s;
+    cursor: pointer;
+    z-index: 2001;
+    background-color: rgba(0, 0, 0, 0.5);
+    border-radius: 50%;
+    padding: 5px 15px;
+}
+
+.lightbox-close:hover,
+.lightbox-close:focus {
+    color: var(--accent-hover-color);
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.lightbox-prev, .lightbox-next {
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    width: auto;
+    padding: 16px;
+    margin-top: -50px;
+    color: var(--text-light);
+    font-weight: bold;
+    font-size: 20px;
+    transition: 0.6s ease;
+    border-radius: 0 3px 3px 0;
+    user-select: none;
+    -webkit-user-select: none;
+    background-color: rgba(0, 0, 0, 0.5);
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.lightbox-prev {
+    left: 30px;
+    border-radius: 50%;
+}
+
+.lightbox-next {
+    right: 30px;
+    border-radius: 50%;
+}
+
+.lightbox-prev:hover, .lightbox-next:hover {
+    background-color: rgba(224, 176, 64, 0.8);
+    color: #1a1a1a;
+}
+
+/* Animations for Lightbox */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes zoomIn {
+    from { transform: scale(0.8); opacity: 0; }
+    to { transform: scale(1); opacity: 1; }
+}
+
+
+/* Process Section Specific Styles */
+.process-section .process-step {
+    padding: 20px;
+}
+
+.process-section .process-step img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    border-radius: 8px;
+    margin-bottom: 15px;
+    border: 1px solid var(--border-color);
+}
+
+.process-section .process-step h3 {
+    font-family: var(--font-heading);
+    font-size: 1.6em;
+    color: var(--accent-color);
+    margin-bottom: 10px;
+}
+
+.process-section .process-step p {
+    font-size: 0.95em;
+    color: var(--text-medium);
+}
+
+
+/* Reviews Section */
+.reviews-section .review-card {
+    padding: 25px;
+    background-color: rgba(50, 50, 50, 0.6);
+    border-radius: 10px;
+    box-shadow: 0 4px 15px var(--shadow-medium);
+    margin: 0 10px; /* Отступ между карточками */
+    border-left: 5px solid var(--accent-color); /* Акцентная полоса */
+    min-height: 200px; /* Минимальная высота для единообразия */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.reviews-section .review-text {
+    font-style: italic;
+    margin-bottom: 15px;
+    color: var(--text-medium);
+}
+
+.reviews-section .review-author {
+    font-weight: 700;
+    color: var(--text-light);
+    text-align: right;
+}
+
+/* Review Form Container */
+.review-form-container {
+    background-color: rgba(50, 50, 50, 0.7); /* Чуть темнее, чем карточки */
+    padding: 30px;
+    border-radius: 10px;
+    margin-top: 50px;
+    box-shadow: 0 4px 20px var(--shadow-dark);
+    max-width: 600px; /* Ограничиваем ширину формы */
+    margin-left: auto;
+    margin-right: auto;
+    border: 1px solid var(--border-color);
+}
+
+.review-form-container h3 {
+    font-family: var(--font-heading);
+    font-size: 2em;
+    color: var(--accent-color);
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.review-form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.review-form input[type="text"],
+.review-form textarea {
+    width: 100%;
+    padding: 12px 15px;
+    border: 1px solid var(--border-color);
+    border-radius: 5px;
+    background-color: rgba(30, 30, 30, 0.8);
+    color: var(--text-light);
+    font-size: 1em;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.review-form input[type="text"]:focus,
+.review-form textarea:focus {
+    border-color: var(--accent-hover-color);
+    box-shadow: 0 0 10px rgba(224, 176, 64, 0.5);
+    outline: none;
+}
+
+.review-form textarea {
+    resize: vertical; /* Разрешить изменение размера только по вертикали */
+    min-height: 100px;
+}
+
+.review-form .btn {
+    align-self: center; /* Выравнивание кнопки по центру */
+    width: fit-content; /* Ширина по содержимому */
+    margin-top: 10px;
+}
+
+
+/* Contact Section */
+.contact-section .contact-info {
+    text-align: center;
+    font-size: 1.2em;
+    line-height: 1.8;
+    background-color: rgba(50, 50, 50, 0.7);
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: inset 0 0 15px rgba(0, 0, 0, 0.4);
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.contact-section .contact-info p {
+    margin-bottom: 10px;
+    color: var(--text-medium);
+}
+
+.contact-section .contact-info p a {
+    color: var(--accent-color);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.contact-section .contact-info p a:hover {
+    color: var(--accent-hover-color);
+    text-decoration: underline;
+}
+
+.contact-section .contact-info .social-links {
+    margin-top: 25px;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+.contact-section .contact-info .social-links a {
+    color: var(--text-light);
+    font-size: 2.2em;
+    transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.contact-section .contact-info .social-links a:hover {
+    color: var(--accent-color);
+    transform: scale(1.1);
+}
+
+/* Fixed Social Buttons */
+.social-fixed-buttons,
+.scroll-fixed-buttons {
+    position: fixed;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    z-index: 990;
+}
+
+.social-fixed-buttons.left-side {
+    left: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.scroll-fixed-buttons.right-side {
+    right: 20px;
+    bottom: 30px;
+}
+
+.social-side-btn,
+.scroll-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: var(--social-btn-size);
+    height: var(--social-btn-size);
+    background-color: rgba(0, 0, 0, 0.7); /* Темный фон */
+    color: var(--text-light);
+    border-radius: 50%;
+    text-decoration: none;
+    font-size: var(--social-icon-size);
+    box-shadow: 0 2px 10px var(--shadow-dark);
+    transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease, color 0.3s ease;
+    border: 1px solid var(--border-color);
+    cursor: pointer;
+}
+
+.social-side-btn:hover,
+.scroll-btn:hover {
+    transform: scale(1.1);
+    box-shadow: 0 4px 15px var(--shadow-dark);
+    border-color: var(--accent-hover-color);
+}
+
+.instagram-side-btn:hover {
+    background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285AEB 90%);
+    color: white;
+}
+
+.telegram-side-btn:hover {
+    background-color: #0088cc;
+    color: white;
+}
+
+.tiktok-side-btn:hover {
+    background-color: #69C9D0;
+    color: white;
+}
+
+.scroll-btn {
+    background-color: rgba(40, 40, 40, 0.7);
+    color: var(--accent-color);
+    border: 1px solid var(--accent-color);
+}
+
+.scroll-btn:hover {
+    background-color: var(--accent-color);
+    color: #1a1a1a;
+}
+
+#scrollToTopBtn {
+    display: none; /* Скрыта по умолчанию */
+}
+/* Скрываем кнопку "вниз", если документ короткий, или при прокрутке до конца */
+#scrollToBottomBtn {
+    display: flex;
+}
+
+
+/* Footer */
+.main-footer {
+    background-color: var(--primary-bg);
+    color: var(--text-medium);
+    text-align: center;
+    padding: 20px 0;
+    border-top: 1px solid var(--border-color);
+    margin-top: 20px; /* Отступ от последней секции */
+    backdrop-filter: blur(8px);
+}
+
+.main-footer p {
+    font-size: 0.9em;
+}
+
+/* Адаптивный дизайн */
+@media (max-width: 992px) {
+    .main-header .container {
+        height: var(--header-height-mobile);
+    }
+
+    .main-nav {
+        position: absolute;
+        top: var(--header-height-mobile);
+        left: 0;
+        width: 100%;
+        background-color: rgba(25, 25, 25, 0.95); /* Полный непрозрачный фон для меню */
+        flex-direction: column;
+        padding: 20px 0;
+        border-top: 1px solid var(--border-color);
+        display: none; /* Скрыто по умолчанию */
+        transform: translateY(-100%); /* Сдвигаем вверх */
+        transition: transform 0.4s ease-out;
+        box-shadow: 0 10px 20px var(--shadow-dark);
+        z-index: 999; /* Ниже хедера, но выше контента */
+    }
+
+    .main-nav.open {
+        transform: translateY(0); /* Показываем */
+        display: flex; /* Показываем, чтобы анимация работала */
+    }
+
+    .main-nav ul {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .main-nav ul li {
+        margin: 10px 0;
+    }
+
+    .main-nav ul li a {
+        font-size: 1.2em;
+    }
+
+    .hamburger-menu {
+        display: flex; /* Показываем гамбургер-меню */
+    }
+
+    .language-switcher {
+        position: absolute;
+        top: 15px;
+        right: 70px; /* Отступ от гамбургера */
+    }
+
+    .hero-section h2 {
+        font-size: 3em;
+    }
+
+    .hero-section .subtitle {
+        font-size: 2em;
+    }
+
+    .hero-section .description {
+        font-size: 1.2em;
+    }
+
+    .section-title {
+        font-size: 2.5em;
+    }
+
+    .about-section .about-content {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .about-section .about-image {
+        min-width: unset;
+        width: 80%;
+        max-width: 400px;
+    }
+    .about-section .about-text {
+        padding: 25px;
+    }
+
+    /* Swiper responsive adjustments */
+    .swiper-slide {
+        transform: scale(0.95); /* Меньшее уменьшение на мобильных */
+    }
+    .swiper-slide-active {
+        transform: scale(1.02); /* Меньшее увеличение на мобильных */
+    }
+
+    .services-swiper, .portfolio-swiper, .process-swiper, .reviews-swiper {
+        /* Общие настройки для всех Swiper на мобильных */
+        --swiper-navigation-size: 40px;
+    }
+
+    .swiper-button-next,
+    .swiper-button-prev {
+        width: 40px;
+        height: 40px;
+        font-size: 1.2em;
+    }
+    .swiper-button-prev {
+        left: 5px;
+    }
+    .swiper-button-next {
+        right: 5px;
+    }
+}
+
+@media (max-width: 768px) {
+    .container {
+        padding: 0 15px;
+    }
+
+    .logo h1 {
+        font-size: 1.5em;
+    }
+
+    .hero-section h2 {
+        font-size: 2.5em;
+    }
+
+    .hero-section .subtitle {
+        font-size: 1.8em;
+    }
+
+    .hero-section .description {
+        font-size: 1em;
+    }
+
+    .btn {
+        padding: 12px 25px;
+        font-size: 1em;
+    }
+
+    .section-title {
+        font-size: 2em;
+        margin-bottom: 40px;
+    }
+
+    section {
+        padding: 60px 0;
+    }
+    section:first-of-type {
+        padding-top: calc(60px + var(--header-height-mobile));
+    }
+
+    .about-section .about-image {
+        width: 90%;
+    }
+    .about-section .about-text {
+        font-size: 1em;
+        padding: 20px;
+    }
+    .about-section .about-text p {
+        margin-bottom: 10px;
+    }
+
+    /* Swiper breakpoints */
+    .services-swiper .swiper-slide,
+    .process-swiper .swiper-slide {
+        width: 90% !important; /* Устанавливаем ширину слайда для одного видимого элемента */
+    }
+
+    .portfolio-swiper .swiper-slide {
+        width: 95% !important; /* Больше ширины для фото */
+        height: 250px;
+    }
+    .portfolio-section .gallery-grid img {
+        border-radius: 8px;
+    }
+    
+    .reviews-swiper .swiper-slide {
+        width: 90% !important; /* Для одного отзыва */
+    }
+
+    .review-form-container {
+        padding: 25px;
+    }
+    .review-form-container h3 {
+        font-size: 1.8em;
+    }
+
+    .contact-section .contact-info {
+        font-size: 1.1em;
+        padding: 25px;
+    }
+    .contact-section .contact-info .social-links a {
+        font-size: 2em;
+    }
+
+    .social-fixed-buttons.left-side {
+        left: 10px;
+    }
+    .scroll-fixed-buttons.right-side {
+        right: 10px;
+        bottom: 20px;
+    }
+    :root {
+        --social-btn-size: 45px;
+        --social-icon-size: 1.5em;
+    }
+
+    .lightbox-close {
+        font-size: 30px;
+        top: 10px;
+        right: 10px;
+    }
+    .lightbox-prev, .lightbox-next {
+        width: 45px;
+        height: 45px;
+        font-size: 1em;
+        margin-top: -30px;
+        padding: 10px;
+    }
+    .lightbox-prev {
+        left: 10px;
+    }
+    .lightbox-next {
+        right: 10px;
+    }
+}
+
+@media (max-width: 480px) {
+    .language-switcher {
+        top: 10px;
+        right: 10px;
+        left: unset;
+        flex-direction: row; /* For very small, keep main button inline with text */
+        align-items: flex-end;
+    }
+    .lang-toggle-btn {
+        padding: 5px 10px;
+        font-size: 0.9em;
+    }
+    .lang-dropdown {
+        min-width: 80px; /* Smaller dropdown */
+        padding: 3px;
+    }
+    .lang-dropdown .lang-btn {
+        padding: 4px 8px;
+        font-size: 0.8em;
+    }
+
+
+    .hero-section h2 {
+        font-size: 2em;
+    }
+    .hero-section .subtitle {
+        font-size: 1.5em;
+    }
+    .btn {
+        padding: 10px 20px;
+        font-size: 0.9em;
+    }
+    .section-title {
+        font-size: 1.8em;
+        margin-bottom: 30px;
+    }
+
+    .service-item {
+        padding: 15px;
+    }
+    .service-item img {
+        height: 140px;
+    }
+    .service-item h3 {
+        font-size: 1.3em;
+    }
+    .service-item p {
+        font-size: 0.85em;
+    }
+
+    .process-step {
+        padding: 20px;
+    }
+    .process-step img {
+        height: 120px;
+    }
+    .process-step h3 {
+        font-size: 1.3em;
+    }
+    .process-step p {
+        font-size: 0.9em;
+    }
+    
+    :root {
+        --social-btn-size: 40px;
+        --social-icon-size: 1.4em;
+    }
+
+    /* Адаптация кнопок на очень маленьких экранах */
+    .social-fixed-buttons,
+    .scroll-fixed-buttons {
+        bottom: 70px; /* Поднимаем повыше, чтобы не перекрывать нижнюю часть экрана */
+        gap: 10px;
+    }
+    .social-fixed-buttons.left-side {
+        left: 5px;
+    }
+    .scroll-fixed-buttons.right-side {
+        right: 5px;
+    }
+
+    .review-form-container, .contact-info {
+        padding: 20px;
+    }
+    .review-form-container h3 {
+        font-size: 1.5em;
+        margin-bottom: 20px;
+    }
+    .review-form input, .review-form textarea {
+        font-size: 0.9em;
+    }
+    .review-form .btn {
+        font-size: 1em;
+    }
+
+    .swiper-button-next,
+    .swiper-button-prev {
+        width: 35px;
+        height: 35px;
+        font-size: 1em;
+    }
+}
