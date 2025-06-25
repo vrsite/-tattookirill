@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title data-lang-key="page_title_main">Портфолио</title>
+    <meta name="description" content="Портфолио Кирилла Ювелира - мастера эксклюзивных татуировок в Германии: реализм, японский стиль, чикано, орнаментал, мини-тату.">
+    <meta name="keywords" content="тату, татуировка, тату мастер, Германия, Хемниц, реализм, японский стиль, чикано, орнаментал, мини-тату, Kirill Yuvelir">
+    
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;700&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header class="main-header">
+        <div class="container">
+            <div class="logo">
+                <h1>TATTOOKIRILL YUVELIR</h1>
+            </div>
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="#about" data-lang-key="nav_about">Обо мне</a></li>
+                    <li><a href="#services" data-lang-key="nav_services">Услуги</a></li>
+                    <li><a href="#portfolio" data-lang-key="nav_portfolio">Работы</a></li>
+                    <li><a href="#process" data-lang-key="nav_process">Процесс</a></li>
+                    <li><a href="#reviews" data-lang-key="nav_reviews">Отзывы</a></li>
+                    <li><a href="#contact" data-lang-key="nav_contact">Контакты</a></li>
+                </ul>
+            </nav>
+            <div class="language-switcher">
+                <button class="lang-toggle-btn">
+                    <i class="fas fa-globe"></i> <span id="currentLangText">RU</span>
+                </button>
+                <div class="lang-dropdown">
+                    <button class="lang-btn" data-lang="ru">RU</button>
+                    <button class="lang-btn" data-lang="uk">UA</button>
+                    <button class="lang-btn" data-lang="en">EN</button>
+                    <button class="lang-btn" data-lang="de">DE</button>
+                </div>
+            </div>
+            <button class="hamburger-menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </header>
+
+    <main>
+        <section id="hero" class="hero-section" style="background-image: url('images/fon.JPG');">
+            <div class="container" data-aos="fade-up">
+                <h2 data-lang-key="hero_main_title">TATTOOKIRILL YUVELIR</h2>
+                <p class="subtitle" data-lang-key="hero_subtitle">Tattoo Germany</p>
+                <p class="description" data-lang-key="hero_description_short">Ваш мастер эксклюзивных татуировок</p>
+                <a href="#contact" class="btn btn-primary" data-lang-key="hero_contact_btn">Связаться</a>
+            </div>
+        </section>
+
+        <section id="about" class="about-section">
+            <div class="container">
+                <h2 class="section-title" data-lang-key="about_title">Обо мне</h2>
+                <div class="about-content">
+                    <div class="about-image" data-aos="fade-right">
+                        <img src="images/osebe.JPG" alt="Обо мне">
+                    </div>
+                    <div class="about-text" data-aos="fade-left">
+                        <p data-lang-key="about_description_new">Привет! Меня зовут Кирилл, я тату-мастер, и свой путь в этой профессии начал довольно рано — в 16 лет. Всё началось с моей первой татуировки, которую я сделал без разрешения родителей. Этот опыт перевернул моё восприятие: я понял, что татуировка — это не просто рисунок на теле, а настоящее искусство и способ самовыражения.</p>
+                        <p data-lang-key="about_description_new_part2">После этого я решил пойти на обучение и погрузился в мир татуировок всерьёз. С тех пор моя жизнь неразрывно связана с этой профессией. Я постоянно развиваюсь, пробую новые стили и техники, чтобы каждое моё тату было не просто работой, а уникальной историей, оставленной на теле человека.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="services" class="services-section">
+            <div class="container">
+                <h2 class="section-title" data-lang-key="services_title">Услуги</h2>
+                <div class="swiper services-swiper">
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide service-item" data-aos="fade-up" data-aos-delay="100">
+                            <img src="images/real.jpg" alt="Реализм">
+                            <h3 data-lang-key="service_realism_title">Реализм</h3>
+                            <p data-lang-key="service_realism_description">Создание детализированных и живых изображений, максимально приближенных к реальности.</p>
+                        </div>
+                        <div class="swiper-slide service-item" data-aos="fade-up" data-aos-delay="200">
+                            <img src="images/yapon.jpg" alt="Японский стиль">
+                            <h3 data-lang-key="service_japanese_title">Японский стиль</h3>
+                            <p data-lang-key="service_japanese_description">Традиционные японские мотивы: драконы, карпы кои, самураи и мифологические существа.</p>
+                        </div>
+                        <div class="swiper-slide service-item" data-aos="fade-up" data-aos-delay="300">
+                            <img src="images/chikano.jpg" alt="Чикано">
+                            <h3 data-lang-key="service_chicano_title">Чикано</h3>
+                            <p data-lang-key="service_chicano_description">Татуировки в стиле чикано: портреты женщин, надписи, карты и религиозные символы.</p>
+                        </div>
+                        <div class="swiper-slide service-item" data-aos="fade-up" data-aos-delay="400">
+                            <img src="images/grafic.jpg" alt="Орнаментал/Графика">
+                            <h3 data-lang-key="service_ornamental_title">Орнаментал/Графика</h3>
+                            <p data-lang-key="service_ornamental_description">Геометрические узоры, мандалы и сложные орнаменты.</p>
+                        </div>
+                        <div class="swiper-slide service-item" data-aos="fade-up" data-aos-delay="500">
+                            <img src="images/mini.JPG" alt="Мини-тату">
+                            <h3 data-lang-key="service_mini_title">Мини-тату</h3>
+                            <p data-lang-key="service_mini_description">Маленькие и аккуратные татуировки с глубоким смыслом.</p>
+                        </div>
+                    </div>
+                    <div class="swiper-pagination"></div>
+                    <div class="swiper-button-next"></div>
+                    <div class="swiper-button-prev"></div>
+                </div>
+            </div>
+        </section>
+
+        <section id="portfolio" class="portfolio-section">
+            <div class="container">
+                <h2 class="section-title" data-lang-key="portfolio_title">Мои работы</h2>
+                <div class="swiper portfolio-swiper">
+                    <div class="swiper-wrapper gallery-grid">
+                        <div class="swiper-slide"><img src="images/r0.JPG" alt="Работа 0" data-aos="zoom-in"></div>
+                        <div class="swiper-slide"><img src="images/r1.PNG" alt="Работа 1" data-aos="zoom-in" data-aos-delay="50"></div>
+                        <div class="swiper-slide"><img src="images/r2.JPG" alt="Работа 2" data-aos="zoom-in" data-aos-delay="100"></div>
+                        <div class="swiper-slide"><img src="images/r3.PNG" alt="Работа 3" data-aos="zoom-in" data-aos-delay="150"></div>
+                        <div class="swiper-slide"><img src="images/r4.JPG" alt="Работа 4" data-aos="zoom-in" data-aos-delay="200"></div>
+                        <div class="swiper-slide"><img src="images/r5.JPG" alt="Работа 5" data-aos="zoom-in" data-aos-delay="250"></div>
+                        <div class="swiper-slide"><img src="images/r6.PNG" alt="Работа 6" data-aos="zoom-in" data-aos-delay="300"></div>
+                        <div class="swiper-slide"><img src="images/r7.JPG" alt="Работа 7" data-aos="zoom-in" data-aos-delay="350"></div>
+                        <div class="swiper-slide"><img src="images/r7.PNG" alt="Работа 7" data-aos="zoom-in" data-aos-delay="400"></div>
+                        <div class="swiper-slide"><img src="images/r8.PNG" alt="Работа 8" data-aos="zoom-in" data-aos-delay="450"></div>
+                        <div class="swiper-slide"><img src="images/r9.JPG" alt="Работа 9" data-aos="zoom-in" data-aos-delay="500"></div>
+                        <div class="swiper-slide"><img src="images/r10.JPG" alt="Работа 10" data-aos="zoom-in"></div>
+                        <div class="swiper-slide"><img src="images/r11.JPG" alt="Работа 11" data-aos="zoom-in" data-aos-delay="50"></div>
+                        <div class="swiper-slide"><img src="images/r13.JPG" alt="Работа 13" data-aos="zoom-in" data-aos-delay="100"></div>
+                        <div class="swiper-slide"><img src="images/r14.JPG" alt="Работа 14" data-aos="zoom-in" data-aos-delay="150"></div>
+                        <div class="swiper-slide"><img src="images/r15.PNG" alt="Работа 15" data-aos="zoom-in" data-aos-delay="200"></div>
+                        <div class="swiper-slide"><img src="images/r17.JPG" alt="Работа 17" data-aos="zoom-in" data-aos-delay="250"></div>
+                        <div class="swiper-slide"><img src="images/r18.JPG" alt="Работа 18" data-aos="zoom-in" data-aos-delay="300"></div>
+                        <div class="swiper-slide"><img src="images/r19.JPG" alt="Работа 19" data-aos="zoom-in" data-aos-delay="350"></div>
+                        <div class="swiper-slide"><img src="images/r20.JPG" alt="Работа 20" data-aos="zoom-in" data-aos-delay="400"></div>
+                        <div class="swiper-slide"><img src="images/r21.JPG" alt="Работа 21" data-aos="zoom-in" data-aos-delay="450"></div>
+                        <div class="swiper-slide"><img src="images/r22.PNG" alt="Работа 22" data-aos="zoom-in" data-aos-delay="500"></div>
+                        <div class="swiper-slide"><img src="images/r23.JPG" alt="Работа 23" data-aos="zoom-in"></div>
+                        <div class="swiper-slide"><img src="images/r24.JPG" alt="Работа 24" data-aos="zoom-in" data-aos-delay="50"></div>
+                        <div class="swiper-slide"><img src="images/r25.JPG" alt="Работа 25" data-aos="zoom-in" data-aos-delay="100"></div>
+                        <div class="swiper-slide"><img src="images/r27.PNG" alt="Работа 27" data-aos="zoom-in" data-aos-delay="150"></div>
+                        <div class="swiper-slide"><img src="images/r28.JPG" alt="Работа 28" data-aos="zoom-in" data-aos-delay="200"></div>
+                        <div class="swiper-slide"><img src="images/r29.PNG" alt="Работа 29" data-aos="zoom-in" data-aos-delay="250"></div>
+                    </div>
+                    <div class="swiper-pagination"></div>
+                    <div class="swiper-button-next"></div>
+                    <div class="swiper-button-prev"></div>
+                </div>
+            </div>
+        </section>
+
+        <section id="process" class="process-section">
+            <div class="container">
+                <h2 class="section-title" data-lang-key="process_title">Процесс создания</h2>
+                <div class="swiper process-swiper">
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide process-step" data-aos="fade-up" data-aos-delay="100">
+                            <img src="images/proces1.JPG" alt="Консультация">
+                            <h3 data-lang-key="process_step1_title">Консультация</h3>
+                            <p data-lang-key="process_step1_description">Обсуждение вашей идеи, выбор стиля, размера и места для татуировки.</p>
+                        </div>
+                        <div class="swiper-slide process-step" data-aos="fade-up" data-aos-delay="200">
+                            <img src="images/proces3.JPG" alt="Разработка эскиза">
+                            <h3 data-lang-key="process_step2_title">Разработка эскиза</h3>
+                            <p data-lang-key="process_step2_description">Создание уникального эскиза, который полностью соответствует вашим пожеланиям.</p>
+                        </div>
+                        <div class="swiper-slide process-step" data-aos="fade-up" data-aos-delay="300">
+                            <img src="images/proces4.JPG" alt="Сеанс татуировки">
+                            <h3 data-lang-key="process_step3_title">Сеанс татуировки</h3>
+                            <p data-lang-key="process_step3_description">Профессиональное и безопасное нанесение татуировки в стерильных условиях.</p>
+                        </div>
+                        <div class="swiper-slide process-step" data-aos="fade-up" data-aos-delay="400">
+                            <img src="images/proces5.JPG" alt="Уход и заживление">
+                            <h3 data-lang-key="process_step4_title">Уход и заживление</h3>
+                            <p data-lang-key="process_step4_description">Рекомендации по уходу за новой татуировкой для быстрого и правильного заживления.</p>
+                        </div>
+                    </div>
+                    <div class="swiper-pagination"></div>
+                    <div class="swiper-button-next"></div>
+                    <div class="swiper-button-prev"></div>
+                </div>
+            </div>
+        </section>
+
+        <section id="reviews" class="reviews-section">
+            <div class="container">
+                <h2 class="section-title" data-lang-key="reviews_title">Отзывы</h2>
+                <div class="swiper reviews-swiper">
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide review-card">
+                            <p class="review-text" data-lang-key="review1_text">"Кирилл - настоящий профессионал! Моя татуировка превзошла все ожидания. Атмосфера в студии очень приятная и расслабляющая."</p>
+                            <p class="review-author" data-lang-key="review1_author">- Анна С.</p>
+                        </div>
+                        <div class="swiper-slide review-card">
+                            <p class="review-text" data-lang-key="review2_text">"Очень доволен результатом! Мастер внимательно выслушал все пожелания и воплотил мою идею в жизнь. Рекомендую всем!"</p>
+                            <p class="review-author" data-lang-key="review2_author">- Иван К.</p>
+                        </div>
+                        <div class="swiper-slide review-card">
+                            <p class="review-text" data-lang-key="review3_text">"Татуировка зажила быстро и без проблем, благодаря четким инструкциям по уходу. Качество работы на высоте, обязательно вернусь еще!"</p>
+                            <p class="review-author" data-lang-key="review3_author">- Елена В.</p>
+                        </div>
+                        <div class="swiper-slide review-card">
+                            <p class="review-text" data-lang-key="review4_text">"Фантастический опыт! Кирилл очень талантлив, а его студия чистая и комфортная. Я в восторге от своей новой татуировки."</p>
+                            <p class="review-author" data-lang-key="review4_author">- Максим З.</p>
+                        </div>
+                        <div class="swiper-slide review-card">
+                            <p class="review-text" data-lang-key="review5_text">"Думал, что будет больнее, но Кирилл работал очень аккуратно и бережно. Результат просто потрясающий, теперь у меня настоящее произведение искусства."</p>
+                            <p class="review-author" data-lang-key="review5_author">- Дарья Л.</p>
+                        </div>
+                    </div>
+                    <div class="swiper-pagination"></div>
+                    <div class="swiper-button-next"></div>
+                    <div class="swiper-button-prev"></div>
+                </div>
+
+                <div class="review-form-container" data-aos="fade-up" data-aos-delay="200">
+                    <h3 data-lang-key="review_form_title">Оставьте свой отзыв</h3>
+                    <form class="review-form">
+                        <input type="text" id="reviewerName" data-lang-key="review_form_name_placeholder" placeholder="Ваше имя" required>
+                        <textarea id="reviewText" data-lang-key="review_form_text_placeholder" placeholder="Ваш отзыв" rows="4" required></textarea>
+                        <button type="submit" class="btn btn-primary" data-lang-key="review_form_submit_btn">Отправить отзыв</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact" class="contact-section">
+            <div class="container">
+                <h2 class="section-title" data-lang-key="contact_title">Контакты</h2>
+                <div class="contact-info">
+                    <p data-lang-key="contact_intro">Свяжитесь со мной для записи или консультации:</p>
+                    <p><i class="fas fa-phone-alt"></i> <a href="tel:+380977702680">+380 97 770 26 80</a></p>
+                    <p><i class="fas fa-envelope"></i> <a href="mailto:nastich.kirill@gmail.com">nastich.kirill@gmail.com</a></p>
+                    <div class="social-links">
+                        <a href="https://www.instagram.com/tattookirill_yuvelir" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="https://t.me/+380977702680" target="_blank" aria-label="Telegram"><i class="fab fa-telegram-plane"></i></a>
+                        <a href="https://www.tiktok.com/@keryatattoo?_t=ZM-8xOIafpGdjc&_r=1" target="_blank" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <div class="social-fixed-buttons left-side">
+        <a href="https://www.instagram.com/tattookirill_yuvelir" target="_blank" class="social-side-btn instagram-side-btn" aria-label="Instagram">
+            <i class="fab fa-instagram"></i>
+        </a>
+        <a href="https://t.me/+380977702680" target="_blank" class="social-side-btn telegram-side-btn" aria-label="Telegram">
+            <i class="fab fa-telegram-plane"></i>
+        </a>
+        <a href="https://www.tiktok.com/@keryatattoo?_t=ZM-8xOIafpGdjc&_r=1" target="_blank" class="social-side-btn tiktok-side-btn" aria-label="TikTok">
+            <i class="fab fa-tiktok"></i>
+        </a>
+    </div>
+
+    <div class="scroll-fixed-buttons right-side">
+        <button id="scrollToTopBtn" class="scroll-btn scroll-to-top" aria-label="Прокрутить вверх">
+            <i class="fas fa-arrow-up"></i>
+        </button>
+        <button id="scrollToBottomBtn" class="scroll-btn scroll-to-bottom" aria-label="Прокрутить вниз">
+            <i class="fas fa-arrow-down"></i>
+        </button>
+    </div>
+
+    <div id="lightbox" class="lightbox">
+        <span class="lightbox-close">&times;</span>
+        <img class="lightbox-content" id="lightbox-img" src="" alt="">
+        <a class="lightbox-prev">&#10094;</a>
+        <a class="lightbox-next">&#10095;</a>
+    </div>
+
+    <footer class="main-footer">
+        <div class="container">
+            <p>&copy; 2024 TattooKirill Yuvelir. <span data-lang-key="footer_rights">Все права защищены.</span></p>
+        </div>
+    </footer>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
